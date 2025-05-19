@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 37 99 235;
+    --primary-dark: 29 78 216;
+    --secondary: 249 115 22;
+    --secondary-dark: 234 88 12;
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --muted: 100 116 139;
+    --border: 226 232 240;
+    --card: 255 255 255;
+    --card-border: 226 232 240;
+    --input: 241 245 249;
+  }
+
+  .dark {
+    --primary: 59 130 246;
+    --primary-dark: 37 99 235;
+    --secondary: 249 115 22;
+    --secondary-dark: 234 88 12;
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --muted: 148 163 184;
+    --border: 30 41 59;
+    --card: 30 41 59;
+    --card-border: 51 65 85;
+    --input: 30 41 59;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .btn-outline {
+    @apply border border-border bg-transparent hover:bg-muted/10;
+  }
+
+  .card {
+    @apply bg-card border border-border rounded-xl p-6;
+  }
+
+  .range-slider {
+    @apply w-full h-1.5 bg-muted/20 rounded-full appearance-none cursor-pointer;
+  }
+
+  .range-slider::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full bg-primary border-2 border-white dark:border-gray-800 shadow-md;
+  }
+}
+
+/* Remove the circular dependency */
+.text-muted {
+  color: rgb(var(--muted));
+}
+
+/* Base styles */
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+/* Custom Range Input Styling */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--input);
+  margin: 1rem 0;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: 2px solid var(--background);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--input);
+}
+
+/* Input Styles */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--foreground);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Star Rating */
+.star-rating {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.star {
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.star.active {
+  color: var(--secondary);
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for image comparison slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: white;
+  outline: none;
+  margin: 0;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.dark input[type="range"] {
+  background: rgb(55, 65, 81);
+}
+
+.dark input[type="range"]::-webkit-slider-thumb,
+.dark input[type="range"]::-moz-range-thumb {
+  background: rgb(209, 213, 219);
+}
